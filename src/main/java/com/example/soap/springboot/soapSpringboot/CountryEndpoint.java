@@ -25,24 +25,11 @@ public class CountryEndpoint {
 	private CountryRepository countryRepository;
 	@Autowired
 	private Tracer tracer;
-
-	@Autowired
-	private SpanAccessor spanAccessor;
-
 	
 	@Autowired
 	public CountryEndpoint(CountryRepository countryRepository) {
 		this.countryRepository = countryRepository;
 	}
-
-//	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountryRequest")
-//	@ResponsePayload
-//	public GetCountryResponse getCountry(@RequestPayload GetCountryRequest request) {
-//		GetCountryResponse response = new GetCountryResponse();
-//		response.setCountry(countryRepository.findCountry(request.getName()));
-//
-//		return response;
-//	}
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountryRequest")
 	@ResponsePayload
@@ -65,24 +52,6 @@ public class CountryEndpoint {
 			System.out.println("Error"+ e.getMessage());
 		}
 		return response;
-	}
-	
-//	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountryRequest")
-//	@ResponsePayload
-//	public GetCountryResponse getCountry(@RequestPayload GetCountryRequest request) {
-//		GetCountryResponse response = new GetCountryResponse();
-//		response.setCountry(countryRepository.findCountry(request.getName()));
-//		RestTemplate restTemplate = new RestTemplate();
-//		HttpHeaders headers = new HttpHeaders();
-//		Span span = this.spanAccessor.getCurrentSpan();
-//		headers.add(Span.SPAN_NAME_NAME, span.getName() );
-//		headers.add(Span.TRACE_ID_NAME, Span.idToHex(span.getTraceId()));
-//		headers.add(Span.SPAN_ID_NAME, Span.idToHex(span.getSpanId()));
-//		headers.setContentType(MediaType.APPLICATION_JSON);
-//		HttpEntity<String> requestRest = new HttpEntity<>("{}", headers);
-//		restTemplate.exchange("http://127.0.0.1:9091/value/test", HttpMethod.POST, requestRest, String.class);
-//		//restTemplate.postForObject("http://127.0.0.1:9091/value/test", "", String.class);
-//		return response;
-//	}	
+	}	
 
 }
