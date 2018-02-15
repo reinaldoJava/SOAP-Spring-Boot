@@ -46,8 +46,7 @@ public class CountryEndpoint {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			
 			HttpEntity<String> requestRest = new HttpEntity<>("{}", headers);
-			//Comentado para outros testes
-			//restTemplate.exchange("http://127.0.0.1:9091/value/test", HttpMethod.POST, requestRest, String.class);
+			restTemplate.exchange("http://127.0.0.1:9091/value/test", HttpMethod.POST, requestRest, String.class);
 			tracer.close(span);
 		} catch (Exception e) {
 			System.out.println("Error"+ e.getMessage());
